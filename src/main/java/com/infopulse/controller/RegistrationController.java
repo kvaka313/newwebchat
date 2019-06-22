@@ -1,6 +1,8 @@
 package com.infopulse.controller;
 
 import com.infopulse.dto.UserDTO;
+import com.infopulse.service.RegistrationControllerService;
+import com.infopulse.service.data.RegistrationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,15 +13,15 @@ import javax.validation.Valid;
 @RestController
 public class RegistrationController {
 
-    private RegistrationService registrationService;
+    private RegistrationControllerService registrationControllerService;
 
-    public RegistrationController(RegistrationService registrationService){
-        this.registrationService = registrationService;
+    public RegistrationController(RegistrationControllerService registrationControllerService){
+        this.registrationControllerService = registrationControllerService;
     }
 
-    @PostMapping(value = "\registration")
+    @PostMapping(value = "/registration")
     public ResponseEntity registration(@Valid @RequestBody UserDTO userDTO){
-        registrationService.save(userDTO);
+        registrationControllerService.save(userDTO);
         return ResponseEntity.accepted().build();
     }
 }

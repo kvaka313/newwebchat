@@ -1,8 +1,9 @@
-package com.infopulse.service;
+package com.infopulse.service.data;
 
 import com.infopulse.converter.UserConverter;
-import com.infopulse.dto.UserDTO;
 import com.infopulse.entity.User;
+import com.infopulse.exception.UserAlreadyExistsException;
+import com.infopulse.repository.WebChatUserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,12 +22,9 @@ public class RegistrationService {
     }
 
     @Transactional
-    public UserDTO save(UserDTO userDTO){
-        User currentUser = userConverter.convertToEntity(userDTO);
-
+    public User save(User currentUser){
         Optional<User> oldUser = webChatUserRepository.findByLogin(currentUser.getLogin());
-        oldUser.ifPresent(entity-> throw new UserAlreadyException());
-        //todo message
-        return userConverter.convertToDto(webChatUserRepository.save(currentUser));
+        oldUser.ifPresent(entity-> {throw new UserAlreadyExistsException();});
+        return webChatUserRepository.save(currentUser);
     }
 }
