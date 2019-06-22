@@ -11,16 +11,13 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "webchat_users")
-public class User {
+@Table(name = "bans")
+public class Ban {
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
     private Long id;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "login")
-    private String login;
-    @OneToOne(mappedBy = "user")
-    private Ban ban;
+
+    @OneToOne
+    private User user;
 }
