@@ -53,4 +53,8 @@ public class UserService {
                 .findByLogin(u.getLogin())
                 .orElseThrow(()-> new UserNotFoundException());
     }
+
+    public Optional<User> findUserByLogin(String login){
+        return webChatUserRepository.findByLogin(login);
+    }
 }
