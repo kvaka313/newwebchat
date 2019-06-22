@@ -20,6 +20,8 @@ public class WebSocketController extends TextWebSocketHandler {
 
     private UserService userService;
 
+    private WebSocketService webSocketService;
+
     private ObjectMapper mapper = new ObjectMapper();
 
     public WebSocketController(UserService userService){
@@ -36,7 +38,9 @@ public class WebSocketController extends TextWebSocketHandler {
               session.close();
           }
 
-          ReceiveMessage receiveMessage = mapper.rew
+          String jsonString = message.getPayload();
+          ReceiveMessage receiveMessage = mapper.readValue(jsonString, ReceiveMessage.class);
+
 
       } catch (IOException e){
           log.error(e.getMessage());
