@@ -22,11 +22,13 @@ public class UserController {
 
     @PatchMapping(value = "/ban/{login}")
     public UserDTO banUser(@PathVariable("login") String login){
+
         return userControllerService.banUser(login);
     }
 
     @DeleteMapping(value = "/ban/{login}")
     public UserDTO unbanUser(@PathVariable("login") String login){
+
         return userControllerService.unbanUser(login);
     }
 }
