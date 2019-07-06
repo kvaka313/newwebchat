@@ -23,6 +23,8 @@ import java.util.concurrent.ConcurrentHashMap;
 @Slf4j
 public class WebSocketController extends TextWebSocketHandler {
 
+    public final static String LOGIN ="login";
+
     @Autowired
     private UserService userService;
 
@@ -39,7 +41,7 @@ public class WebSocketController extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session){
      try {
-         String login = (String) session.getAttributes().get("login");
+         String login = (String) session.getAttributes().get(LOGIN);
          Optional<User> user = userService.findUserByLogin(login);
          if (user.isPresent()) {
              if (user.get().getBan() != null) {
