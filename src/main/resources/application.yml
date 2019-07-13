@@ -34,5 +34,10 @@ server:
 redis:
   host: 127.0.0.1
 
+logging:
+  level:
+    root: DEBUG
+
+
 infopulse:
   serviceName: newwebchat

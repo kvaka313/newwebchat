@@ -17,7 +17,7 @@ public class UserControllerService {
 
     public UserControllerService(UserService userService, UserConverter userConverter){
         this.userService = userService;
-        this.userService = userService;
+        this.userConverter = userConverter;
     }
 
     public List<UserDTO> findAll(){
