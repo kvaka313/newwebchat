@@ -41,7 +41,7 @@ public class SecurityInterceptor implements HandshakeInterceptor {
             return false;
         }
 
-        if(!isExpired(token)){
+        if(isExpired(token)){
             response.setStatusCode(HttpStatus.UNAUTHORIZED);
             return false;
         }
