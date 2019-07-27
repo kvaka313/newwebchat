@@ -11,7 +11,4 @@ import java.util.Optional;
 public interface WebChatUserRepository extends JpaRepository<User, Long> {
     Optional<User> findByLogin(String login);
 
-    @Modifying
-    @Query("DELETE FROM Ban b WHERE b.user = :user")
-    void removeBan(@Param("user") User user);
 }

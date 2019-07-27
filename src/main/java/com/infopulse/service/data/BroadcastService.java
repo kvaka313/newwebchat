@@ -23,6 +23,10 @@ public class BroadcastService {
     }
 
     public List<BroadcastMessage> getAll(){
-       return redisTemplate.opsForList().range("broadcast", 0, -1);
+        try {
+            return redisTemplate.opsForList().range("broadcast", 0, -1);
+        } catch(Exception e){
+            return null;
+        }
     }
 }
