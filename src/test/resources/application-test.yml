@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    username: postgres
+    password: Tsunami9
+    driverClassName: org.postgresql.Driver
+    driverDialect: org.hibernate.dialect.PostgreSQL82Dialect
+    url: jdbc:postgresql://localhost/newwebchattest_db
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+
+  liquibase:
+    change-log: classpath:db/changelog-master.xml
+
+infopulse:
+  serviceName: newwebchat

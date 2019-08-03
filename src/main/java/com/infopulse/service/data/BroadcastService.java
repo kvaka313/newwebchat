@@ -1,11 +1,13 @@
 package com.infopulse.service.data;
 
 import com.infopulse.entity.BroadcastMessage;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Profile("!test")
 @Service
 public class BroadcastService {
 

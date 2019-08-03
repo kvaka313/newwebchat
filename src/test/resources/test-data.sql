@@ -1,0 +1,1 @@
+INSERT INTO webchat_users(id, login, name)VALUES(503,'Kolya', 'Kolya');

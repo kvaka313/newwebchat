@@ -24,7 +24,7 @@ public class RegistrationService {
     @Transactional
     public User save(User currentUser){
         Optional<User> oldUser = webChatUserRepository.findByLogin(currentUser.getLogin());
-        oldUser.ifPresent(entity-> {throw new UserAlreadyExistsException();});
+        oldUser.ifPresent(entity-> {throw new UserAlreadyExistsException("User already exist.");});
         return webChatUserRepository.save(currentUser);
     }
 }
